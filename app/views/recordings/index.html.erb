@@ -1,0 +1,63 @@
+<body id="blog">
+  
+  <%= render "header.html.erb"%> 
+
+  <div id="posts">
+    <div class="container">
+      <%= show_alert_notice %>
+      <div class="row">
+        <div class="col-md-9">
+
+<!-- to paginator -->
+          <%= paginate @recordings, :window => 2 %>
+<!-- from paginator --> 
+
+<!-- to posts  -->
+         <div class="post">         
+         <% @recordings.approved.each do |recording| %> 
+            <%= link_to(image_tag(recording.webimage.image.url(:med),alt: reocrding.webimage.wi_name), arecord_path(recording), class: "pic") if recording.webimage_ids.length>0 %>
+            <div class="title">
+              <%= link_to recording.rec_header, arecord_path(recording) %>
+            </div>            
+            <div class="author">
+              <%= image_tag(recording.user.webimages.first.image.url(:med),class: "avatar", alt: "author") if recording.user.webimage_ids.length>0 %>
+              <%= recording.user.full_name + ', ' + recording.created_at.strftime('%B %C, %G') %>
+            </div>
+            <p class="intro">
+              <%= recording.rec_teaser.html_safe %>
+            </p>
+            <%= link_to "Continue reading this post", arecord_path(recording), class: "continue-reading" %>
+          <% end %>
+          </div>
+<!-- from posts  -->
+
+<!-- to paginator -->
+          <%= paginate @recordings, :window => 2 %>
+<!-- from paginator --> 
+        </div>
+
+          <%= render "right.html.erb" %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= render "footer.html.erb"%> 
+
+  <script type="text/javascript">
+    $(function () {
+      $(".search input:text").focus(function () {
+        $(".icomoon-search").addClass("active");
+      });
+      $(".search input:text").blur(function () {
+        $(".icomoon-search").removeClass("active");
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+
+

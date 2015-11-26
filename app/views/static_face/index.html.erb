@@ -1,0 +1,76 @@
+<body id="home">
+
+  <div id="hero">
+    <div class="container">
+      <h1 class="hero-text animated fadeInDown">
+        The best analog sounding <br>
+        devices
+      </h1>
+      <p class="sub-text animated fadeInDown">
+        Breaking patented know-hows and high-level engeneering in symbiosis with best audio components
+      </p>
+      <div class="cta animated fadeInDown">
+        <a href="http://strudelvox.com" class="button-outline">See the projects</a>
+        <%= link_to "Join the blog", recordings_path, class: "button" if current_user.present? %>
+        <%= link_to "Join the blog", new_user_registration_path, class: "button" unless current_user.present? %>
+      </div>
+      <div class="img"></div>
+    </div>
+  </div>
+
+  <div id="features">
+    <div class="container">
+      <div class="row header">
+        <div class="col-md-12">
+          <h2>Need a spitzen-klasse sounding device?</h2>
+          <p>Our technologies of sound amplification will let you to hear the difference.</p>
+        </div>
+      </div>
+      <div class="row feature">
+        <div class="col-md-6 info">
+          <h4>Any the device ist custom.</h4>
+          <p>
+            We preparing exactly yours sounding device according your needs and specifications. It WILL sound, and 
+            sound GREAT, unbeatable and unique. We giving a life-time warranty and support on any component of the system.
+          </p>
+        </div>
+        <div class="col-md-6 image">
+          <a href="http://strudelvox.com"><%= image_tag('feature1.png',class: "img-responsive") %></a>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="row feature backwards">
+        <div class="col-md-6 info">
+          <h4>Got Idea!</h4>
+          <p>
+            My audioblog would give you ability to discover all possible aspects on your way to acheving the sound you want.
+          </p>
+          <p>
+            Write some text here to explain the features you want introduce in your system and we'll try to find out their imapact to the process.
+          </p>
+        </div>
+        <div class="col-md-6 image">
+          <%= link_to image_tag('feature2.png',class: "img-responsive"), recordings_path %>
+        </div>
+      </div>
+    </div>    
+  </div>
+
+  <div id="clients">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>Forum communities</h3>
+          <p>
+            We woun't exist without help of all these people, so we appreciate to say our thanks to them: 
+          </p>
+          <div class="logos">
+            <a href="http://www.audioportal.com/forum.php"><%= image_tag('ap_logo.png',alt: "Audioportal.com") %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

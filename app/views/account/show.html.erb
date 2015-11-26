@@ -1,0 +1,59 @@
+<body id="blogpost">
+
+<%= render "header.html.erb" %>
+
+<div id="blogpost-wrapper">
+<div class="login_container">
+<%= show_alert_notice_a %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4><%= "Edit preferences" %></h4>
+  </div>
+  <div class="panel-body">
+    <%= form_for @account, url: account_path(@account), :html => { :autocomplete => "off", :id => 'f3', multipart: true } do |f| %>
+      <% if current_user.status == 0 then %>
+      <div class="form-group" style=" text-align: center; font-size: 12px; background-color: #FF99CC; width: 130px;">Banned!</div>
+      <% end %>
+      <div class="form-group">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "I want to recieve email notifications  " %>
+        <%= f.check_box :notifications %>
+      </div>
+
+      <%= f.label "Avatar image: " %><br />
+      <%= link_to(image_tag(@account.profile_image.url(:avatar)),@account.profile_image.url) %><br /><br />
+      <%= f.file_field :profile_image ,type: :file %>
+      <br />
+
+      <div class="form-group">
+        <%= link_to "Click here to change your email, password or delete an account", edit_user_registration_path %>
+      </div>
+
+      <span class="submit" id="formBack">
+        <a href="<%= session[:return_to] %>" class="button-clear">
+        <span>Back</span>
+        </a>
+      </span>
+
+      <button id="formSave" class="button-clear">
+      <span>Save</span>
+      </button>
+
+    <% end %>
+  </div>
+</div>
+
+</div>
+</div>
+
+<%= render "footer.html.erb" %>
+
+</body>
+</html>

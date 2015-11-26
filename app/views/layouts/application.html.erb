@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <title>Strudelvox Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- stylesheets -->
+  <%= stylesheet_link_tag  'application', media: 'all' %>
+  
+  <!-- javascript -->
+  <%= javascript_include_tag 'application' %>
+
+  <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'ru',
+      includedLanguages: 'en,bg,hu,nl,da,ga,is,es,it,la,lv,lt,de,no,pl,pt,ru,sr,sk,sl,fi,fr,hr,cs,sv,et,ja',
+      autoDisplay: false,
+      floatPosition: google.translate.TranslateElement.FloatPosition.TOP_RIGHT
+    });
+  }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+
+<%= yield %>
+

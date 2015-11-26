@@ -1,0 +1,30 @@
+<div class="col-md-3 sidebar">
+<div class="search">
+  <%= form_for 'search', url: '/search', method: :get do |f| %>
+    <span class="icomoon-search"></span>
+    <%= text_field_tag :q, params[:q], placeholder: "Search on blog..." %>
+  <% end %>
+</div>
+<div class="updates">
+  <strong>
+    Free blog updates
+    <!-- <i class="fa fa-rss"></i> -->
+  </strong>
+  <p>
+    Never miss an update.
+    Sign up to receieve an email whenever we post something in the blog.
+  </p>
+</div>
+<!--
+<div class="follow-tw">
+  <img src="/assets/images/twitterfollow.png" alt="follow-tw">
+</div>
+-->
+<!-- to teaser -->
+<div class="best-hits">
+  <strong>Check out our best hits:</strong>
+  <% Recording.teased.each do |recording| %>
+  <%= link_to recording.rec_header + " (" + recording.rec_hits.to_s + " views) ", arecord_path(recording) %>
+  <% end %>
+</div>
+<!-- from teaser -->

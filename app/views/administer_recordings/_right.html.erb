@@ -1,0 +1,17 @@
+<div class="col-md-3 sidebar">
+  <div class="search">
+    <%= form_for 'search', url: '/search', method: :get do |f| %>
+      <span class="icomoon-search"></span>
+      <%= text_field_tag :q, params[:q], placeholder: "Search on blog..." %>
+    <% end %>
+  </div>
+  <div class="updates">
+    <strong>
+      Admin's
+      <!-- <i class="fa fa-rss"></i> -->
+    </strong>
+    <p>
+      some tasks...
+    </p>
+  </div>
+</div>

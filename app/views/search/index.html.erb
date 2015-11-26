@@ -1,0 +1,71 @@
+<body id="blog">
+
+  <%= render "recordings/header.html.erb"%>
+
+  <div id="posts">
+    <div class="container">
+      <%= show_alert_notice %>
+      <div class="row">
+        <div class="col-md-9">
+<!-- to paginator -->
+        <%= paginate @recordings, :window => 2 %>
+<!-- from paginator -->
+
+<!-- to posts  -->
+        <div class="post">
+          <% flag = false %>
+          <% @recordings.each do |recording| %>
+          <div class="title" style="font-size: 14px">
+            <%= link_to recording.rec_header, arecord_path(recording.id) %>
+          </div>
+          <div class="author">
+            <%= 'By : ' + recording.user.first_name + ' ' + recording.user.last_name + ', ' + recording.created_at.to_date.strftime('%B %C, %G') %>
+          </div>
+          <p style="font-size: 12px">
+            <%= recording.rec_teaser.html_safe %>
+          </p>
+          <hr>
+          <% flag = true %>
+          <% end %>
+          <% unless flag %>
+            <div class="title" style="font-size: 14px">No results found</div>
+          <% end %>
+        </div>
+<!-- from posts  -->
+
+<!-- to paginator -->
+        <%= paginate @recordings, :window => 2 %>
+<!-- from paginator -->
+        </div>
+
+        <div class="col-md-3 sidebar">
+          <div class="search">
+            <%= form_for 'search', url: '/search', method: :get do |f| %>
+              <span class="icomoon-search"></span>
+              <%= text_field_tag :q, params[:q], placeholder: "Search on blog..." %>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <%= render "recordings/footer.html.erb"%>
+
+  <script type="text/javascript">
+    $(function () {
+      $(".search input:text").focus(function () {
+        $(".icomoon-search").addClass("active");
+      });
+      $(".search input:text").blur(function () {
+        $(".icomoon-search").removeClass("active");
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,94 @@
+<body id="blogpost">
+  
+  <%= render "recordings/header.html.erb" %>
+
+  <div id="blogpost-wrapper">
+    <div class="container">
+        <%= show_alert_notice %>
+      <div class="row">
+        <div class="col-md-10 post">
+          <div class="content">
+          <%= form_for @rec, :html => { :id => 'f4' }, url: arecord_path, method: 'patch' do |f| %>
+              <style>
+              .t1 {
+                border: 2px none black;
+                border-collapse: collapse;
+              }
+              .r1 {
+                padding: 6px;
+                text-align: right; 
+              }
+              .l1 {
+                padding: 6px;
+                text-align: left; 
+                width: 90%;
+              }
+              input#recording_rec_header {
+                width: 100%;
+              }
+              textarea#recording_rec_teaser {
+                width: 100%;
+              }
+              </style>
+            <table class="t1">
+              <tr>
+              <td class="r1"><%= f.label("By :  ") %></td>
+                <td class="l1">
+                <%= image_tag(@rec.user.webimages.first.image.url(:med),class: "avatar", alt: "author") if @rec.user.webimage_ids.length>0 %>
+                <%= @rec.user.full_name + ', ' + @rec.created_at.strftime('%B %C, %G %H:%M') %>
+                </td>
+              </tr>
+              <tr>
+                <td class="r1"><%= f.label("Hader :  ") %></td><td class="l1"><%= f.text_field( :rec_header) %></td>
+              </tr>
+              <tr>
+                <td class="r1"><%= f.label("Teaser :  ") %></td><td class="l1"><%= f.cktext_area(:rec_teaser) %></td>
+              </tr>
+              <tr>
+                <td class="r1"><%= f.label("Text :  ") %></td><td class="l1" colspan="2"><%= f.cktext_area(:rec_text) %></td>
+              </tr>
+              <% if current_user.admin? %>
+              <tr>
+                <td class="r1">
+                <%= f.label("Approve ") %>
+                </td>
+                <td class="l1">
+                <%= f.radio_button(:rec_approved,"1") %>
+                </td>
+              </tr>
+              <tr>
+                <td class="r1">
+                <%= f.label("Deny ") %>
+                </td>
+                <td class="l1">
+                <%= f.radio_button(:rec_approved,"0") %>
+                </td>
+              </tr>
+              <% else %>
+              <tr>
+                <td class="l1" colspan="2">After being created, your record will be published by admin. However you may edit it through your account.
+                </td>
+              </tr>
+              <% end %>
+              <tr>
+                <td class="l1" colspan="2">
+                <span class="submit">
+                  <a href="<%= session[:return_to] %>" class="button-clear"><span>Back</span></a>
+                </span>                        
+                <span class="submit">
+                  <a href="javascript:;" onclick="document.getElementById('f4').submit()" class="button-clear"><span>Save</span></a>
+                </span>
+                </td>
+              </tr>
+              </table>
+            <% end %>
+          </div>          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <%= render "recordings/footer.html.erb" %>
+
+</body>
+</html>

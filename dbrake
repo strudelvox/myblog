@@ -1,0 +1,5 @@
+rm -rf public/system/webimages
+rake db:drop
+rake db:create
+rake db:migrate
+

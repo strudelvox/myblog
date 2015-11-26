@@ -1,0 +1,43 @@
+<body id="signup">
+  <div class="container">
+    <div class="row header">
+      <div class="col-md-12">
+        <h3 class="logo">
+          <a href="/recordings">StrudelVOX Blog</a>
+        </h3>
+        <h4>Sign in to your account</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="wrapper clearfix">
+          <div class="formy">
+            <div class="row">
+              <div class="col-md-12">
+                <%= form_for :session, :html => { :id => 'f2' }, url: '/login' do |f| %> 
+                <div class="form-group">
+                  <%= f.text_field :email, class: 'form-control', :placeholder => 'Email' %> 
+                </div>
+                <div class="form-group">
+                  <%= f.password_field :password, class: 'form-control', :placeholder => 'Password' %> 
+                </div>
+                <div class="submit" onclick="document.form.submit()">
+                  <a href="javascript:;" onclick="document.getElementById('f2').submit()" class="button-clear">
+                    <span>Sign me in!</span>
+                  </a>
+                </div>
+                <% end %>
+              </div>
+            </div>            
+          </div>
+        </div>
+        <div class="already-account">
+          Don't have an account?
+          <%= link_to "Create one here", signup_path %></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body></html>
+  

@@ -1,0 +1,47 @@
+<body id="blogpost">
+  
+  <%= render "recordings/header.html.erb" %>
+
+  <div id="blogpost-wrapper">
+    <div class="container">
+            <%= show_alert_notice %>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="main-pic">
+            <%= link_to(image_tag(@rec.webimage.image.url(:med),alt: reocrding.webimage.wi_name), arecord_path(@rec), class: "pic") if @rec.webimage_ids.length>0 %>
+          </div>          
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10 post">
+          <div class="title">
+            <%= @rec.rec_header %>
+          </div>
+          <div class="author">
+            <%= image_tag(@rec.user.webimages.first.image.url(:med),class: "avatar", alt: "author") if @rec.user.webimage_ids.length>0 %>
+            <%= @rec.user.first_name + ' ' + @rec.user.last_name + ', ' + @rec.created_at.strftime('%B %C, %G') %>
+          </div>
+          <div class="content"> 
+              <%= @rec.rec_teaser.html_safe %> <br>
+              <%= @rec.rec_text.html_safe %> 
+          </div>
+          <div class="share">
+            <img src="React%20-%20Bootstrap%20Theme_files/share.png" alt="share">
+          </div>
+          <div class="other-posts">
+            <a href="#" class="prev">
+              ← Learn Rails in 30 days
+            </a>
+            <a href="#" class="next pull-right">
+              Take care of yourself →
+            </a>
+          </div>          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <%= render "recordings/footer.html.erb"%> 
+
+</body>
+</html>
