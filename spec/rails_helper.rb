@@ -88,7 +88,7 @@ RSpec.configure do |config|
       model.__elasticsearch__.refresh_index!
     end
     example.run
-    Recording.__elasticsearch__.client.indices.delete index: Recording.index_name
+    # Recording.__elasticsearch__.client.indices.delete index: Recording.index_name
   end
 
   config.infer_base_class_for_anonymous_controllers = false
